@@ -5,5 +5,10 @@
 }
 
 body {
-  background: green;
+  background: #f6f5f3;
+  color: #3d3d3f;
+}
+
+#header {
+  background: #7dce94;
 }
