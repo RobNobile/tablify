@@ -15,6 +15,10 @@ module.exports = {
     contentBase: path.resolve(__dirname, 'dist'),
     // publicPath: '/dist/',
     hot: true,
+    // proxy example for Names list. Install 'concurrently' package and add to dev script:
+    proxy: {
+      '/api': 'http://localhost:3000',
+    }
   },
   mode: process.env.NODE_ENV,
   module: {
