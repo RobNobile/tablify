@@ -1,6 +1,19 @@
-import sum from './sum';
+import React from 'react';
+// import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+// import { render } from 'react-dom';
 
-const greet = name => console.log(`Hello ${name}!`);
-greet('Rob');
+import Header from './containers/Header.jsx';
+import Main from './containers/Main.jsx';
 
-console.log('TestLog!!!', sum(3, 3));
+function App() {
+  console.log('!!!React App!!!')
+  return (
+    <div>
+      <Header />
+      <Main />
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));

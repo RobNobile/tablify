@@ -9,12 +9,11 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     // consider filename: 'js/[name].[hash].js', for caching - https://www.sentinelstand.com/article/create-react-app-from-scratch-with-webpack-and-babel
     filename: './[name].[hash].js',
-    // make the build folder a public path
-    // publicPath: '/dist/',
   },
   devServer: {
     // The dev server will serve content from this directory.
-    contentBase: path.resolve(__dirname, 'client'),
+    contentBase: path.resolve(__dirname, 'dist'),
+    // publicPath: '/dist/',
     hot: true,
   },
   mode: process.env.NODE_ENV,
