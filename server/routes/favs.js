@@ -12,8 +12,8 @@ router.put('/', fileController.addFavs, (req, res) => {
   res.status(200).json(res.locals.addFavs);
 })
 
-router.delete('/', (req, res) => {
-  res.status(200).json('Delete req to /favs');
+router.delete('/', fileController.deleteFavs, (req, res) => {
+  res.status(200).send('Removed fav!');
 })
 
 module.exports = router;
