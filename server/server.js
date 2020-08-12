@@ -4,6 +4,13 @@ const PORT = 3000;
 
 const path = require('path');
 
+// require routers:
+const favsRouter = require('./routes/favs');
+
+// parse req body:
+app.use(express.json());
+
+
 // api example for proxy:
 const namesList = [
   {name: 'Name1', id: 'a0'},
@@ -11,16 +18,11 @@ const namesList = [
   {name: 'Name3', id: 'c0'},
   {name: 'Name4', id: 'd0'},
 ];
-
-// require routers:
-
-// parse req body:
-app.use(express.json());
-
 // proxy example:
 app.get('/api/testNames', (req, res) => {
   res.status(200).send(namesList);
 });
+
 
 if (process.env.NODE_ENV === 'production') {
   // statically serve everything in the dist folder on the route
@@ -31,8 +33,26 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+app.use('/favs', favsRouter);
+
+// catch-all route handler for req to unknown routes
+app.use((req, res) => {
+  return res.status(400).send('Page not found. TRY AGAIN!')
+});
+
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unkown middleware error!',
+    status: 500,
+    message: { err: 'An error occurred!' }
+  };
+  const errorObj = Object.assign(defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
+})
+
 app.listen(PORT, () => {
   console.log(`tab-server Listening on port: ${PORT}`);
-})
+});
 
 module.exports = app;

@@ -49,6 +49,11 @@ module.exports = {
           // 'sass-loader',
         ],
       },
+      {
+        test: /\.(png|jpg)$/,
+        exclude: /node_modules/,
+        loader: 'url-loader'
+      },
     ]
   },
   plugins: [

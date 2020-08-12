@@ -5,10 +5,15 @@
 }
 
 body {
-  background: #f6f5f3;
+  /* background: #f6f5f3; */
+  background:  #f6f5f3 url('./guitaroutline.png') no-repeat fixed center;
+  /* background-image: url('./guitaroutline.png'); */
   color: #3d3d3f;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #header {
   background: #7dce94;
+  text-align: center;
+  padding: 30px;
 }
