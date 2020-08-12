@@ -10,8 +10,8 @@ class Header extends Component {
       <div id="header">
         <h1>TAB Stream</h1>
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default Header;

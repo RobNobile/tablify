@@ -17,3 +17,50 @@ body {
   text-align: center;
   padding: 30px;
 }
+
+#header > h1 {
+  font-size: 60px;
+}
+
+#searchbox {
+  /* border: 1px solid red; */
+  margin: 20px 0 20px;
+  text-align: center;
+}
+
+#searchbox * {
+  /* border: 1px solid blue; */
+  margin: 10px 0;
+}
+
+#searchbox > label {
+  font-weight: bold;
+  font-size: large;
+}
+
+#searchbox > input {
+  width: 200px;
+  padding: 7px;
+}
+
+#searchbox > button {
+  background: #7dce94;
+  border: 1px solid #3d3d3f;
+  margin-left: 5px;
+  padding: 7px;
+  width: 90px;
+  border-radius: 3px;
+}
+
+#song {
+
+}
+
+.song-details {
+  /* display: flex; */
+  /* border: 1px solid red; */
+}
+
+.song-details * span {
+  font-weight: bold;
+}
