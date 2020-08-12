@@ -20,6 +20,12 @@ class Main extends Component {
     //   .then(data => console.log(data));
   }
 
+  handleInputText(e) {
+    this.setState({
+      inputText: e,
+    });
+  }
+
   handleSearchClick() {
     const searchTerm = this.state.inputText.trim().replace(/\s/g, '+');
     console.log(searchTerm)
@@ -28,12 +34,6 @@ class Main extends Component {
       .then(data => this.setState({
         searchResults: data,
       }));
-  }
-  
-  handleInputText(e) {
-    this.setState({
-      inputText: e,
-    });
   }
 
   handleFavClick() {
