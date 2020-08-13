@@ -17,13 +17,12 @@ class Main extends Component {
     this.handleFavClick = this.handleFavClick.bind(this);
   }
 
-  componentDidUpdate() {
-    // console.log('comDidUpdate()')
-    // console.log(this.state.saveFav);
-    // return fetch('http://www.songsterr.com/a/ra/songs.json?pattern=Marley')
-    //   .then(data => data.json())
-    //   .then(data => console.log(data));
-    // return fetch
+  componentDidMount() {
+    console.log('componentDidMount!!!')
+    fetch('/favs')
+    .then(res => res.json())
+    .then(res => console.log('getFavsRes', res))
+    .catch(err => console.log('Error: ', err));
   }
 
   handleInputText(e) {

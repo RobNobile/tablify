@@ -7,7 +7,6 @@ fileController.getFavs = (req, res, next) => {
   db.query(queryString)
     // no data.json() since it's not json
     .then(data => {
-      console.log('getFavs!', data.rows);
       res.locals.favs = data.rows;
       next();
     })
@@ -21,7 +20,6 @@ fileController.getFavs = (req, res, next) => {
 
 // .addFavs to db
 fileController.addFavs = (req, res, next) => {
-  console.log('addFavsBody!', req.body)
   const { song_id, song, artist, tabtypes, url } = req.body;
   db.query(`SELECT * FROM fav_songs WHERE song_id = ${song_id}`)
     .then(data => {
@@ -37,7 +35,6 @@ fileController.addFavs = (req, res, next) => {
       const songDetails = [ song_id, song, artist, tabtypes, url ];
       db.query(queryString, songDetails)
         .then(data => {
-          // console.log(data);
           res.locals.addFavs = data.rows;
           next();
         })
