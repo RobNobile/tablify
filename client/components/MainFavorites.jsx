@@ -11,18 +11,10 @@ class MainFavorites extends Component {
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
-  // componentDidUpdate() {
-  //   console.log('New container componentDidUpdate!!!')
-  //   fetch('/favs')
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     this.setState({
-  //       displayFavs: res,
-  //     });
-  //     console.log(res);
-  //   })
-  //   .catch(err => console.log('Error: ', err))
-  // }
+  componentDidUpdate() {
+    console.log('New container componentDidUpdate!!!')
+
+  }
 
   componentDidMount() {
     console.log('New container componentDidMount!!!')
