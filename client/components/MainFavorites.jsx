@@ -38,25 +38,40 @@ class MainFavorites extends Component {
   }
 
   handleDeleteClick(e) {
+    // const { song_id } = this.state.displayFavs[e.target.id]
+    // fetch('/favs', {
+    //   method: 'DELETE',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ song_id }),
+    // })
+    // .then(res => {
+    //   console.log('DELETED > Retreiving:')
+    //   fetch('/favs')
+    //     .then(res => res.json())
+    //     .then(res => {
+    //       console.log('Updated list!')
+    //       this.setState({
+    //         displayFavs: res,
+    //       });
+    //     })
+    //     .catch(err => console.log('GET Favs Error: ', err))
+    // })
+    // .catch(err => console.log('DELETE Favs Error: ', err));
+    console.log('f.delete')
     const { song_id } = this.state.displayFavs[e.target.id]
     fetch('/favs', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ song_id }),
     })
+    .then(res => res.json())
     .then(res => {
-      console.log('DELETED > Retreiving:')
-      fetch('/favs')
-        .then(res => res.json())
-        .then(res => {
-          console.log('Updated list!')
-          this.setState({
-            displayFavs: res,
-          });
-        })
-        .catch(err => console.log('GET Favs Error: ', err))
+      this.setState({
+        displayFavs: res,
+      });
+      console.log('This res: ', res);
     })
-    .catch(err => console.log('DELETE Favs Error: ', err));
+    .catch(err => console.log('Error: ', err))
   };
 
   render() {

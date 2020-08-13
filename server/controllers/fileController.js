@@ -56,8 +56,28 @@ fileController.addFavs = (req, res, next) => {
 // .deleteFavs to remove from db
 fileController.deleteFavs = (req, res, next) => {
   const { song_id } = req.body;
-  db.query(`DELETE FROM fav_songs WHERE song_id = ${song_id}`)
-  next();
+  db.query(`DELETE FROM fav_songs WHERE song_id = ${song_id}`).then(() => {
+    const queryString = `SELECT * FROM fav_songs`;
+    db.query(queryString)
+      // no data.json() since it's not json
+      .then(data => {
+        res.locals.favs = data.rows;
+        next();
+      })
+      .catch(err => {
+        next({
+          log: `fileController.getFavs: ERROR: ${err}`,
+          message: { err: 'fileController.getFavs: ERROR: Check server logs for details' },
+        });
+      });
+  })
+  .catch(err => {
+    next({
+      log: `fileController.deleteFavs: ERROR: ${err}`,
+      message: { err: 'fileController.deleteFavs: ERROR: Check server logs for details' },
+    });
+  });
+  
 }
 
 module.exports = fileController;

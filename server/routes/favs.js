@@ -13,7 +13,7 @@ router.put('/', fileController.addFavs, (req, res) => {
 })
 
 router.delete('/', fileController.deleteFavs, (req, res) => {
-  res.status(200).send('Removed fav!');
+  res.status(200).json(res.locals.favs);
 })
 
 module.exports = router;
