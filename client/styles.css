@@ -80,3 +80,15 @@ body {
 .song-details * span {
   font-weight: bold;
 }
+
+#headerFavorites {
+  background: #3d3d3f;
+  opacity: .8;
+  text-align: center;
+  padding: 15px;
+}
+
+#headerFavorites > h1 {
+  color: #7dce94;;
+  font-size: 30px;
+}

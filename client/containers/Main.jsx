@@ -10,7 +10,7 @@ class Main extends Component {
       inputText: '',
       searchResults: [],
       saveFav: {},
-      displayFavs: []
+      // displayFavs: []
     };
     this.handleSearchClick = this.handleSearchClick.bind(this);
     this.handleInputText = this.handleInputText.bind(this);

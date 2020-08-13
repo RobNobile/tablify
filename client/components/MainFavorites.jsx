@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import FavSongsContainer from './FavSongsContainer.jsx';
+
 class MainFavorites extends Component {
   constructor(props) {
     super(props);
@@ -9,8 +11,8 @@ class MainFavorites extends Component {
     // this.handleSearchClick = this.handleSearchClick.bind(this);
   }
 
-  // componentDidMount() {
-  //   console.log('New container componentDidMount!!!')
+  // componentDidUpdate() {
+  //   console.log('New container componentDidUpdate!!!')
   //   fetch('/favs')
   //   .then(res => res.json())
   //   .then(res => this.setState({
@@ -49,11 +51,9 @@ class MainFavorites extends Component {
   // };
 
   render() {
-    return <h1>FavSongContainer</h1>
-      // <favSongContainer 
-      //   // searchResults={this.state.searchResults}
-      //   // handleFavClick={this.handleFavClick}
-      // />;
+    return <FavSongsContainer />
+        // searchResults={this.state.searchResults}
+        // handleFavClick={this.handleFavClick}  
   };
 };
 
