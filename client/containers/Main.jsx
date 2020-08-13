@@ -21,7 +21,9 @@ class Main extends Component {
     console.log('componentDidMount!!!')
     fetch('/favs')
     .then(res => res.json())
-    .then(res => console.log('getFavsRes', res))
+    .then(res => this.setState({
+      displayFavs: res,
+    }))
     .catch(err => console.log('Error: ', err));
   }
 

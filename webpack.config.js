@@ -17,7 +17,7 @@ module.exports = {
     hot: true,
     // proxy example for Names list. Install 'concurrently' package and add to dev script:
     proxy: {
-      '/api': 'http://localhost:3000',
+      '/': 'http://localhost:3000',
     }
   },
   mode: process.env.NODE_ENV,
