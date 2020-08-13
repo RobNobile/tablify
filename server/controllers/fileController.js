@@ -3,11 +3,11 @@ const fileController = {};
 
 // .getFavs from db to send back to client to display songs
 fileController.getFavs = (req, res, next) => {
-  const queryString = `SELECT * FROM favs`;
+  const queryString = `SELECT * FROM fav_songs`;
   db.query(queryString)
     // no data.json() since it's not json
     .then(data => {
-      console.log(data.rows);
+      console.log('getFavs!', data.rows);
       res.locals.favs = data.rows;
       next();
     })
@@ -21,8 +21,9 @@ fileController.getFavs = (req, res, next) => {
 
 // .addFavs to db
 fileController.addFavs = (req, res, next) => {
-  const { id, song_name, artist_name } = req.body;
-  db.query(`SELECT * FROM favs WHERE id = ${id}`)
+  console.log('addFavsBody!', req.body)
+  const { song_id, song, artist, tabtypes, url } = req.body;
+  db.query(`SELECT * FROM fav_songs WHERE song_id = ${song_id}`)
     .then(data => {
       if (data.rows.length > 0) {
         res.locals.addFavs = data.rows;
@@ -30,10 +31,10 @@ fileController.addFavs = (req, res, next) => {
       } 
       // or else, add:
       const queryString = 
-      `INSERT INTO favs (id, song_name, artist_name)
-      VALUES ($1, $2, $3)
+      `INSERT INTO fav_songs (song_id, song, artist, tabtypes, url)
+      VALUES ($1, $2, $3, $4, $5)
       RETURNING *`;
-      const songDetails = [ id, song_name, artist_name ];
+      const songDetails = [ song_id, song, artist, tabtypes, url ];
       db.query(queryString, songDetails)
         .then(data => {
           // console.log(data);
@@ -57,8 +58,8 @@ fileController.addFavs = (req, res, next) => {
 
 // .deleteFavs to remove from db
 fileController.deleteFavs = (req, res, next) => {
-  const { id } = req.body;
-  db.query(`DELETE FROM favs WHERE id = ${id}`)
+  const { song_id } = req.body;
+  db.query(`DELETE FROM fav_songs WHERE song_id = ${song_id}`)
   next();
 }
 

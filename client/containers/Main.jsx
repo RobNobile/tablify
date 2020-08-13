@@ -8,16 +8,22 @@ class Main extends Component {
     super(props);
     this.state = {
       inputText: '',
-      searchResults: []
+      searchResults: [],
+      saveFav: {},
+      displayFavs: []
     };
     this.handleSearchClick = this.handleSearchClick.bind(this);
     this.handleInputText = this.handleInputText.bind(this);
+    this.handleFavClick = this.handleFavClick.bind(this);
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
+    // console.log('comDidUpdate()')
+    // console.log(this.state.saveFav);
     // return fetch('http://www.songsterr.com/a/ra/songs.json?pattern=Marley')
     //   .then(data => data.json())
     //   .then(data => console.log(data));
+    // return fetch
   }
 
   handleInputText(e) {
@@ -28,7 +34,6 @@ class Main extends Component {
 
   handleSearchClick() {
     const searchTerm = this.state.inputText.trim().replace(/\s/g, '+');
-    console.log(searchTerm)
     return fetch(`http://www.songsterr.com/a/ra/songs.json?pattern=${searchTerm}`)
       .then(data => data.json())
       .then(data => this.setState({
@@ -36,9 +41,34 @@ class Main extends Component {
       }));
   }
 
-  handleFavClick() {
-    console.log('Fav!')
-  }
+  handleFavClick(e) {
+    const { id, title, artist, tabTypes } = this.state.searchResults[e.target.id];
+    this.setState({
+      saveFav: {
+        song_id: id,
+        song: title,
+        artist: artist.name,
+        tabtypes: tabTypes,
+        url: `http://www.songsterr.com/a/wa/song?id=${id}`
+      },
+    });
+    
+    const dbData = { 
+      song_id: id,
+      song: title,
+      artist: artist.name,
+      tabtypes: tabTypes,
+      url: `http://www.songsterr.com/a/wa/song?id=${id}`
+    };
+    fetch('/favs', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dbData),
+    })
+    .then(res => res.json())
+    .then(res => console.log('res!!!', res))
+    .catch(err => console.log('Error: ', err));
+  };
 
   render() {
     return (

@@ -5,6 +5,7 @@ const SongContainer = props => {
   const results = props.searchResults.map((song, index) => {
     return <Song 
       key={`Song${index}`}
+      index={index}
       handleFavClick={props.handleFavClick}
       artist={song.artist.name}
       song={song.title}

@@ -11,7 +11,8 @@ const Song = props => {
         </p>
         <p><span>Tab Types: </span>{props.tabTypes}</p>
       </div>
-      <button className="buttonSave" onClick={props.handleFavClick}>Save</button>
+      <button className="buttonSave" id={props.index} onClick={e => props.handleFavClick(e)}>Save</button>
+      {/* <button className={`buttonSave ${props.songId}`} onClick={e => props.handleFavClick(e.target)}>Save</button> */}
     </div>
   );
 };
