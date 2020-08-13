@@ -6,10 +6,10 @@
 
 body {
   /* background: #f6f5f3; */
-  background:  #f6f5f3 url('./guitaroutline.png') no-repeat fixed center;
+  background:  #767676 url('./guitaroutline.png') no-repeat fixed center;
   /* background-image: url('./guitaroutline.png'); */
   color: #3d3d3f;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Verdana, Geneva, sans-serif;
 }
 
 #header {
@@ -36,6 +36,7 @@ body {
 #searchbox > label {
   font-weight: bold;
   font-size: large;
+  color: #ffffff;
 }
 
 #searchbox > input {
@@ -45,11 +46,21 @@ body {
 
 #searchbox > button {
   background: #7dce94;
-  border: 1px solid #3d3d3f;
+  border: 1px solid #7dce94;
   margin-left: 5px;
   padding: 7px;
   width: 90px;
   border-radius: 3px;
+}
+
+#searchbox > button:hover {
+  background: #3d3d3f;
+  border: 1px solid #3d3d3f;
+  color: #7dce94;
+}
+
+*:focus{
+  outline: none;
 }
 
 #song-container, #favSongsContainer {
@@ -59,13 +70,25 @@ body {
 }
 
 #song {
-  background: #f0efea;
-  border: 1px solid #3d3d3f;
+  /* background: #f0efea;
+  border: 1px solid #f0efea; */
+  /* background: #e1e1e1; */
+  background: #dcdcdc;
   border-radius: 3px;
   word-wrap: break-word;
   margin: 20px;
   padding: 10px;
   width: 400px;
+}
+
+a:link {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .song-details {
@@ -75,10 +98,11 @@ body {
 
 .song-details > p {
   margin-bottom: 3px;
+  color: #4d4d4f;
 }
 
 .song-details * span {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 #headerFavorites {
@@ -89,6 +113,17 @@ body {
 }
 
 #headerFavorites > h1 {
-  color: #7dce94;;
+  color: #7dce94;
   font-size: 30px;
+}
+
+.buttonSave, .buttonDelete {
+  background: #dcdcdc;
+  color: #36a756;
+  border: none;
+  float: right;
+}
+
+.buttonSave:hover, .buttonDelete:hover {
+  cursor: pointer;
 }
