@@ -5,7 +5,10 @@ import MainFavorites from '../components/MainFavorites.jsx';
 const Favorites = props => (
   <div>
     <HeaderFavorites />
-    <MainFavorites />
+    <MainFavorites 
+      added={props.added}
+      addedClick={props.addedClick}
+    />
   </div>
 )
 

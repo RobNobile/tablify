@@ -10,22 +10,11 @@ class Main extends Component {
       inputText: '',
       searchResults: [],
       saveFav: {},
-      // displayFavs: []
     };
     this.handleSearchClick = this.handleSearchClick.bind(this);
     this.handleInputText = this.handleInputText.bind(this);
     this.handleFavClick = this.handleFavClick.bind(this);
   }
-
-  // componentDidMount() {
-  //   console.log('componentDidMount!!!')
-  //   fetch('/favs')
-  //   .then(res => res.json())
-  //   .then(res => this.setState({
-  //     displayFavs: res,
-  //   }))
-  //   .catch(err => console.log('Error: ', err));
-  // }
 
   handleInputText(e) {
     this.setState({
@@ -67,7 +56,10 @@ class Main extends Component {
       body: JSON.stringify(dbData),
     })
     .then(res => res.json())
-    .then(res => console.log('res!!!', res))
+    .then(res => {
+      console.log('res!!!', res);
+      this.props.addedClick();
+    })
     .catch(err => console.log('Error: ', err));
   };
 
