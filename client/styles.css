@@ -52,7 +52,7 @@ body {
   border-radius: 3px;
 }
 
-#song-container {
+#song-container, #FavSongsContainer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

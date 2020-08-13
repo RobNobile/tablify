@@ -1,24 +1,24 @@
 import React from 'react';
-// import FavSongs from './FavSongs.jsx'
+import FavSong from './FavSong.jsx'
 
 const FavSongsContainer = props => {
-  // const results = props.searchResults.map((song, index) => {
-  //   return <Song 
-  //     key={`Song${index}`}
-  //     index={index}
-  //     handleFavClick={props.handleFavClick}
-  //     artist={song.artist.name}
-  //     song={song.title}
-  //     songId={song.id}
-  //     tabTypes={song.tabTypes}
-  //   />
-  // })
+  const results = props.displayFavs.map((song, index) => {
+    return <FavSong 
+      key={`favSong${index}`}
+      index={index}
+      handleDeleteClick={props.handleDeleteClick}
+      artist={song.artist}
+      song={song.song}
+      songId={song.id}
+      tabtypes={song.tabtypes}
+      url={song.url}
+    />
+  })
   
   return (
-    // <div id="favSongsContainer">
-    //   {results}
-    // </div>
-    <h1>FavSongsContainer</h1>
+    <div id="favSongsContainer">
+      {results}
+    </div>
   );
 };
 

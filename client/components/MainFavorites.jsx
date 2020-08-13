@@ -8,52 +8,53 @@ class MainFavorites extends Component {
     this.state = {
       displayFavs: []
     };
-    // this.handleSearchClick = this.handleSearchClick.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
   // componentDidUpdate() {
   //   console.log('New container componentDidUpdate!!!')
   //   fetch('/favs')
   //   .then(res => res.json())
-  //   .then(res => this.setState({
-  //     displayFavs: res,
-  //   }))
-  //   .catch(err => console.log('Error: ', err));
+  //   .then(res => {
+  //     this.setState({
+  //       displayFavs: res,
+  //     });
+  //     console.log(res);
+  //   })
+  //   .catch(err => console.log('Error: ', err))
   // }
 
-  // handleFavClick(e) {
-  //   const { id, title, artist, tabTypes } = this.state.searchResults[e.target.id];
-  //   this.setState({
-  //     saveFav: {
-  //       song_id: id,
-  //       song: title,
-  //       artist: artist.name,
-  //       tabtypes: tabTypes,
-  //       url: `http://www.songsterr.com/a/wa/song?id=${id}`
-  //     },
-  //   });
-    
-  //   const dbData = { 
-  //     song_id: id,
-  //     song: title,
-  //     artist: artist.name,
-  //     tabtypes: tabTypes,
-  //     url: `http://www.songsterr.com/a/wa/song?id=${id}`
-  //   };
-  //   fetch('/favs', {
-  //     method: 'PUT',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(dbData),
-  //   })
-  //   .then(res => res.json())
-  //   .then(res => console.log('res!!!', res))
-  //   .catch(err => console.log('Error: ', err));
-  // };
+  componentDidMount() {
+    console.log('New container componentDidMount!!!')
+    fetch('/favs')
+    .then(res => res.json())
+    .then(res => {
+      this.setState({
+        displayFavs: res,
+      });
+      console.log(res);
+    })
+    .catch(err => console.log('Error: ', err))
+  }
+
+  handleDeleteClick(e) {
+    const { song_id } = this.state.displayFavs[e.target.id]
+    console.log({ song_id })
+    fetch('/favs', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ song_id }),
+    })
+    .catch(err => console.log('Error: ', err));
+  };
 
   render() {
-    return <FavSongsContainer />
-        // searchResults={this.state.searchResults}
-        // handleFavClick={this.handleFavClick}  
+    return (
+      <FavSongsContainer 
+        displayFavs={this.state.displayFavs}
+        handleDeleteClick={this.handleDeleteClick}
+      />
+    )
   };
 };
 
