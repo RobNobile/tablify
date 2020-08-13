@@ -39,13 +39,24 @@ class MainFavorites extends Component {
 
   handleDeleteClick(e) {
     const { song_id } = this.state.displayFavs[e.target.id]
-    console.log({ song_id })
     fetch('/favs', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ song_id }),
     })
-    .catch(err => console.log('Error: ', err));
+    .then(res => {
+      console.log('DELETED > Retreiving:')
+      fetch('/favs')
+        .then(res => res.json())
+        .then(res => {
+          console.log('Updated list!')
+          this.setState({
+            displayFavs: res,
+          });
+        })
+        .catch(err => console.log('GET Favs Error: ', err))
+    })
+    .catch(err => console.log('DELETE Favs Error: ', err));
   };
 
   render() {
