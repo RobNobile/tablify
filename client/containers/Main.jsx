@@ -17,15 +17,15 @@ class Main extends Component {
     this.handleFavClick = this.handleFavClick.bind(this);
   }
 
-  componentDidMount() {
-    console.log('componentDidMount!!!')
-    fetch('/favs')
-    .then(res => res.json())
-    .then(res => this.setState({
-      displayFavs: res,
-    }))
-    .catch(err => console.log('Error: ', err));
-  }
+  // componentDidMount() {
+  //   console.log('componentDidMount!!!')
+  //   fetch('/favs')
+  //   .then(res => res.json())
+  //   .then(res => this.setState({
+  //     displayFavs: res,
+  //   }))
+  //   .catch(err => console.log('Error: ', err));
+  // }
 
   handleInputText(e) {
     this.setState({

@@ -7,6 +7,7 @@ import styles from './styles.css';
 
 import Header from './containers/Header.jsx';
 import Main from './containers/Main.jsx';
+import Favorites from './containers/Favorites.jsx';
 
 function App() {
   console.log('!!!React App!!!')
@@ -14,6 +15,7 @@ function App() {
     <div>
       <Header />
       <Main />
+      <Favorites />
     </div>
   )
 }
